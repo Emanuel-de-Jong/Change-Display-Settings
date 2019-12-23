@@ -1,0 +1,7 @@
+D:\Programming\c#\console\SDVX-Setup\SDVX-Setup\bin\Debug\SDVX-Setup.exe.config
+D:\Programming\c#\console\SDVX-Setup\SDVX-Setup\bin\Debug\SDVX-Setup.exe
+D:\Programming\c#\console\SDVX-Setup\SDVX-Setup\bin\Debug\SDVX-Setup.pdb
+D:\Programming\c#\console\SDVX-Setup\SDVX-Setup\obj\Debug\SDVX-Setup.csprojAssemblyReference.cache
+D:\Programming\c#\console\SDVX-Setup\SDVX-Setup\obj\Debug\SDVX-Setup.csproj.CoreCompileInputs.cache
+D:\Programming\c#\console\SDVX-Setup\SDVX-Setup\obj\Debug\SDVX-Setup.exe
+D:\Programming\c#\console\SDVX-Setup\SDVX-Setup\obj\Debug\SDVX-Setup.pdb
