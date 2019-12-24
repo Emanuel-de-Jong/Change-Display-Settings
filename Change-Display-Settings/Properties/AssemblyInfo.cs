@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SDVX-Setup")]
+[assembly: AssemblyTitle("Change-Display-Settings")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SDVX-Setup")]
+[assembly: AssemblyProduct("Change-Display-Settings")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("bb0fb25c-851f-46f4-b153-410e5ceb4dfc")]
+[assembly: Guid("df7352d5-00ed-4149-a75e-247fd7e36673")]
 
 // Version information for an assembly consists of the following four values:
 //

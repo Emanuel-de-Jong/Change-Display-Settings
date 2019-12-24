@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BB0FB25C-851F-46F4-B153-410E5CEB4DFC}</ProjectGuid>
+    <ProjectGuid>{DF7352D5-00ED-4149-A75E-247FD7E36673}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SDVX_Setup</RootNamespace>
-    <AssemblyName>SDVX-Setup</AssemblyName>
+    <RootNamespace>Change_Display_Settings</RootNamespace>
+    <AssemblyName>Change-Display-Settings</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -48,7 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

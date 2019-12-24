@@ -127,7 +127,7 @@ namespace SDVX_Setup
             [param: MarshalAs(UnmanagedType.U4)]
             uint dwflags);
 
-        public static void ChangeDisplaySettings (int width, int height, int frequency, int orientation)
+        public static void ChangeDisplaySettings(int width, int height, int frequency, int orientation)
         {
             DEVMODE originalMode = new DEVMODE();
             originalMode.dmSize =
