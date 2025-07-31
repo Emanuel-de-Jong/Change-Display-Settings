@@ -74,13 +74,13 @@ namespace ChangeDisplaySettings
             refreshRateOption.Description = "The refresh rate in Hz.";
 
             Option<string?> resolutionOption = new("Resolution", ["--resolution", "-r"]);
-            resolutionOption.Description = "The resolution in the format WIDTHxHEIGHT (e.g., 1920x1080).";
+            resolutionOption.Description = "The resolution in the format WIDTHxHEIGHT (e.g. 1920x1080).";
 
             Option<OrientationEnum?> orientationOption = new("Orientation", ["--orientation", "-o"]);
             orientationOption.Description = "The display orientation: Landscape, ReverseLandscape, Portrait, ReversePortrait.";
 
             Option<List<int>> monitorsOption = new("Monitors", ["--monitors", "-m"]);
-            monitorsOption.Description = "Apply changes to multiple monitors (1-indexed).";
+            monitorsOption.Description = "The indexes of the monitors to apply the changes to, starting at 1.";
             monitorsOption.AllowMultipleArgumentsPerToken = true;
             monitorsOption.Arity = ArgumentArity.OneOrMore;
 
@@ -89,11 +89,6 @@ namespace ChangeDisplaySettings
             rootCommand.Options.Add(resolutionOption);
             rootCommand.Options.Add(orientationOption);
             rootCommand.Options.Add(monitorsOption);
-
-            rootCommand.SetAction(parseResult =>
-            {
-                Console.WriteLine("HELLO");
-            });
 
             ParseResult parseResult = rootCommand.Parse(args);
             if (parseResult.Errors.Any())
@@ -105,6 +100,14 @@ namespace ChangeDisplaySettings
             }
 
             await parseResult.InvokeAsync();
+
+            // If the help command was used, the program should stop running.
+            // Due to the stupid way CommandLine works, the entire code outside of HandleArgs would have to be run in a different thread
+            // if I wanted to do it in the intended way. So I'll cheese it like this:
+            if (args.Contains("--help") || args.Contains("-h") || args.Contains("-?"))
+            {
+                throw new Exception("");
+            }
 
             refreshRate = parseResult.GetValue(refreshRateOption);
             resolution = parseResult.GetValue(resolutionOption);
