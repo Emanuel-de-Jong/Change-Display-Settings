@@ -7,7 +7,7 @@ namespace ChangeDisplaySettings
     internal class Program
     {
         public static bool IS_DEBUG = true;
-        public static string[] DEBUG_ARGS = { "-r", "1280x720" };
+        public static string[] DEBUG_ARGS = { "-h" };
 
         private enum OrientationEnum
         {
@@ -32,7 +32,7 @@ namespace ChangeDisplaySettings
         private static int Main(string[] args)
         {
             Program program = new();
-            bool isSuccess = program.Run(IS_DEBUG ? DEBUG_ARGS : args);
+            bool isSuccess = program.Run(IS_DEBUG ? DEBUG_ARGS : args).Result;
 
             if (IS_DEBUG && isSuccess)
             {
@@ -45,11 +45,11 @@ namespace ChangeDisplaySettings
             return isSuccess ? 0 : 1;
         }
 
-        public bool Run(string[] args)
+        public async Task<bool> Run(string[] args)
         {
             try
             {
-                HandleArgs(args);
+                await HandleArgs(args);
 
                 FindOriginalSettings();
 
@@ -68,7 +68,7 @@ namespace ChangeDisplaySettings
             }
         }
 
-        private void HandleArgs(string[] args)
+        private async Task HandleArgs(string[] args)
         {
             Option<int?> refreshRateOption = new("--refresh-rate", "-rr");
             refreshRateOption.Description = "The refresh rate in Hz.";
@@ -98,6 +98,8 @@ namespace ChangeDisplaySettings
                     Console.Error.WriteLine(error.Message);
                 }
             }
+
+            await parseResult.InvokeAsync();
 
             refreshRate = parseResult.GetValue(refreshRateOption);
             resolution = parseResult.GetValue(resolutionOption);
