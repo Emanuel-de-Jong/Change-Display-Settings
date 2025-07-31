@@ -70,16 +70,16 @@ namespace ChangeDisplaySettings
 
         private async Task HandleArgs(string[] args)
         {
-            Option<int?> refreshRateOption = new("--refresh-rate", "-rr");
+            Option<int?> refreshRateOption = new("RefreshRate", ["--refresh-rate", "-rr"]);
             refreshRateOption.Description = "The refresh rate in Hz.";
 
-            Option<string?> resolutionOption = new("--resolution", "-r");
+            Option<string?> resolutionOption = new("Resolution", ["--resolution", "-r"]);
             resolutionOption.Description = "The resolution in the format WIDTHxHEIGHT (e.g., 1920x1080).";
 
-            Option<OrientationEnum?> orientationOption = new("--orientation", "-o");
+            Option<OrientationEnum?> orientationOption = new("Orientation", ["--orientation", "-o"]);
             orientationOption.Description = "The display orientation: Landscape, ReverseLandscape, Portrait, ReversePortrait.";
 
-            Option<List<int>> monitorsOption = new("--monitors", "-m");
+            Option<List<int>> monitorsOption = new("Monitors", ["--monitors", "-m"]);
             monitorsOption.Description = "Apply changes to multiple monitors (1-indexed).";
             monitorsOption.AllowMultipleArgumentsPerToken = true;
             monitorsOption.Arity = ArgumentArity.OneOrMore;
@@ -89,6 +89,11 @@ namespace ChangeDisplaySettings
             rootCommand.Options.Add(resolutionOption);
             rootCommand.Options.Add(orientationOption);
             rootCommand.Options.Add(monitorsOption);
+
+            rootCommand.SetAction(parseResult =>
+            {
+                Console.WriteLine("HELLO");
+            });
 
             ParseResult parseResult = rootCommand.Parse(args);
             if (parseResult.Errors.Any())
