@@ -6,8 +6,8 @@ namespace ChangeDisplaySettings
 {
     internal class Program
     {
-        public static bool IS_DEBUG = true;
-        public static string[] DEBUG_ARGS = { "-h" };
+        public static bool IS_DEBUG = false;
+        public static string[] DEBUG_ARGS = { "-r", "1280x720" };
 
         private enum OrientationEnum
         {
@@ -265,26 +265,17 @@ namespace ChangeDisplaySettings
 
             try
             {
-                DEVMODE dm = new();
-                dm.dmSize = (short)Marshal.SizeOf(typeof(DEVMODE));
-
-                uint i = 0;
-                DISPLAY_DEVICE monitor = new();
-                monitor.cb = Marshal.SizeOf<DISPLAY_DEVICE>();
-
-                while (NativeMethods.EnumDisplayDevices(null, i, ref monitor, 0))
+                foreach (MonitorSetting setting in originalSettings)
                 {
-                    if (NativeMethods.EnumDisplaySettings(
-                        monitor.DeviceName, NativeMethods.ENUM_CURRENT_SETTINGS, ref dm) != 0)
+                    DEVMODE dm = setting.DM;
+
+                    DISP_CHANGE result = NativeMethods.ChangeDisplaySettingsEx(setting.Name, ref dm, IntPtr.Zero,
+                        DisplaySettingsFlags.CDS_UPDATEREGISTRY, IntPtr.Zero);
+
+                    if (result != DISP_CHANGE.Successful)
                     {
-                        NativeMethods.ChangeDisplaySettingsEx(
-                            monitor.DeviceName, ref dm, IntPtr.Zero,
-                            DisplaySettingsFlags.CDS_UPDATEREGISTRY, IntPtr.Zero);
+                        Console.Error.WriteLine($"Failed to revert settings for monitor {setting.Name}: {result}");
                     }
-
-                    monitor = new DISPLAY_DEVICE { cb = Marshal.SizeOf<DISPLAY_DEVICE>() };
-
-                    i++;
                 }
             }
             catch (Exception revertEx)
