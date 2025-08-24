@@ -1,20 +1,12 @@
 # Change Display Settings
 Change display settings quickly using console flags.
 
-### Table of Contents
-- [About](#about)
+**Active Development:** <br>
+**Last Change:** <br>
 
 | | |
 | :---: | :---: |
-| ![](/Screenshots/1.png) | ![](/Screenshots/2.png) |
-
-## About
-| | |
-| --- | --- |
-| | - **Project Overview** - |
-| **Active Development:** |  |
-| **Maintenance:** |  |
-
+| ![](/Screenshots/.png) | ![](/Screenshots/.png) |
 
 ## Skill showcase
 Shows that I can work with the Windows API directly.
