@@ -1,8 +1,8 @@
 # Change Display Settings
 Change display settings quickly using console flags.
 
-**Active Development:** <br>
-**Last Change:** <br>
+**Active Development:** 2025-07-31 - 2025-07-31<br>
+**Last Change:** 2025-07-31<br>
 
 | | |
 | :---: | :---: |
